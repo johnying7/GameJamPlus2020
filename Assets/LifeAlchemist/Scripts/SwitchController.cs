@@ -7,7 +7,7 @@ public class SwitchController : MonoBehaviour
 {
     public UnityEvent myUnityEvent;
 
-    private bool canActivate;
+    private bool canActivate = false;
 
     public 
     // Start is called before the first frame update
@@ -19,7 +19,7 @@ public class SwitchController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Submit"))
+        if (Input.GetButtonDown("Submit") && canActivate)
         {
             Debug.Log("activating switch");
             myUnityEvent.Invoke();
