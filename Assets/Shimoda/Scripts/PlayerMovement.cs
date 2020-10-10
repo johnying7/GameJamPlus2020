@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float jumpForce;
     public float jumpTime;
-    private bool movingRight = true;
+    private bool movingRight = false;
     private float timer = 0.0f;
     private Rigidbody myRigidbody;
     private Transform character;
@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void MoveHorizontal(){
-        float direction = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        float direction = -Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         if(direction != 0){
             if (direction > 0 && ! movingRight){
                 movingRight = true;
