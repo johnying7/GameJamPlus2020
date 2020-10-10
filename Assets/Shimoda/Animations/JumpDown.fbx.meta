@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: e9d5bb136a6bf1846ab176fb9505f948
+guid: 50628069a5200804896b9fd8ff8aefeb
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: JumpUp
+    second: JumpDown
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,7 +35,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: JumpUp
+      name: JumpDown
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
@@ -58,15 +58,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.5990876
-        functionName: JumpAnimStarted
-        data: 
-        objectReferenceParameter: {fileID: 11500000, guid: c00201a5961208e4d8238ec1be4671ff,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

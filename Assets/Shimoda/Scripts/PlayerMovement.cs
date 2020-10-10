@@ -26,7 +26,9 @@ public class PlayerMovement : MonoBehaviour
         if(jumpForce <= 0) jumpForce = 8f;
         if(jumpTime <= 0) jumpTime = 0.3f;
         // Yet another small change
-        timer = jumpTime + 1; 
+        timer = jumpTime + 1;
+        ground.BackToGround.AddListener(BackFromJump);
+        ground.OffTheGround.AddListener(JumpStartForce);
     }
 
     void MoveHorizontal(){
@@ -42,20 +44,33 @@ public class PlayerMovement : MonoBehaviour
             }
             character.Translate(new Vector3(0, 0, Mathf.Abs(direction)));
         }
-        animator.SetFloat("Speed", Mathf.Abs(direction));
+        Debug.Log("Speed " + Mathf.Abs(direction/Time.deltaTime));
+        animator.SetFloat("Speed", Mathf.Abs(direction/Time.deltaTime));
     }
 
     void Jump(){
         if(Input.GetButton("Jump") && ground.Check() && timer >= jumpTime){
-            myRigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+            //
             timer = 0.0f;
             // Triggers jump Animation
             animator.SetBool("Jumping",true);
+            animator.SetTrigger("InitJump");
         }
         if(timer <= jumpTime){
             timer += Time.deltaTime;
         }
     }
+
+    public void JumpStartForce(){
+        //Debug.Log("Jump Start Force");
+        myRigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+    }
+
+    void BackFromJump(){
+        animator.SetBool("Jumping",false);
+        animator.SetTrigger("EndJump");
+    }
+
     // Update is called once per frame
     void Update()
     {
