@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody myRigidbody;
     private Transform character;
     private GroundContact ground;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
         character = transform.Find("Character");
         myRigidbody = character.GetComponent<Rigidbody>();
         ground = character.GetComponent<GroundContact>();
+        animator = character.GetComponent<Animator>();
         if(speed <= 0) speed = 1f;
         if(jumpForce <= 0) jumpForce = 8f;
         if(jumpTime <= 0) jumpTime = 0.3f;
@@ -40,20 +42,26 @@ public class PlayerMovement : MonoBehaviour
             }
             transform.Translate(new Vector3(0, 0, direction));
         }
+        Debug.Log("Speed: " + Mathf.Abs(direction));
+        animator.SetFloat("Speed", Mathf.Abs(direction));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        MoveHorizontal();
-        Debug.Log("Timer: "+ timer);
+    void Jump(){
         if(Input.GetButton("Jump") && ground.Check() && timer >= jumpTime){
             myRigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
             timer = 0.0f;
+            // Triggers jump Animation
+            animator.SetBool("Jumping",true);
         }
         if(timer <= jumpTime){
             timer += Time.deltaTime;
         }
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        MoveHorizontal();
+        Jump();
     }
 
 }
