@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
+    public bool activatePlatformWithSwitch = false;
     public Transform platform;
     public List<Transform> platformPositions; //list of positions the platform will move to (in order)
     public List<float> platformStationaryTimeLength; //list of the amount of time the platform will stay at each platform position
@@ -19,6 +20,11 @@ public class MovingPlatform : MonoBehaviour
         {
             Debug.LogError("The platform positions list count (" + platformPositions.Count + ") does not match the platform stationary time length list count (" + platformStationaryTimeLength.Count + ").");
         }
+
+        if (activatePlatformWithSwitch)
+        {
+            resetPlatform = false;
+        }
     }
 
     // Update is called once per frame
@@ -33,6 +39,11 @@ public class MovingPlatform : MonoBehaviour
                 getDuration(platform.position, platformPositions[currentIndex].position, speed
             )));
         }
+    }
+
+    public void activatePlatform()
+    {
+        resetPlatform = true;
     }
 
     private IEnumerator moveToPosition(Vector3 origin, Vector3 target, float duration)

@@ -10,10 +10,7 @@ public class PlatformAttachment : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (this.transform.parent.parent.tag != "Player")
-        {
-            Debug.LogError("Parent of parent tag not set to Player.");
-        }
+        
     }
 
     private void OnTriggerEnter(Collider other) {
