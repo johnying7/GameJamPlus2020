@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Shimoda/Scenes/MainScene.unity
+    guid: 496c885e359ca414ab3f5f3edec63dd5
   m_configObjects: {}
