@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
         myRigidbody = character.GetComponent<Rigidbody>();
         ground = character.GetComponent<GroundContact>();
         if(speed <= 0) speed = 1f;
-        if(jumpForce <= 0) jumpForce = 0.4f;
+        if(jumpForce <= 0) jumpForce = 8f;
         if(jumpTime <= 0) jumpTime = 0.3f;
         // Yet another small change
         timer = jumpTime + 1; 
@@ -46,7 +46,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         MoveHorizontal();
-        if(Input.GetButton("Jump") && ground.Check() /*&& timer >= jumpTime*/){
+        Debug.Log("Timer: "+ timer);
+        if(Input.GetButton("Jump") && ground.Check() && timer >= jumpTime){
             myRigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
             timer = 0.0f;
         }
