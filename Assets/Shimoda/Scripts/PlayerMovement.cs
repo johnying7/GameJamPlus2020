@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    // just a small change
     public float speed;
     bool movingRight = true;
     // Start is called before the first frame update
     void Start()
     {
+        // Yet another small change
         
     }
 
