@@ -42,7 +42,6 @@ public class PlayerMovement : MonoBehaviour
             }
             transform.Translate(new Vector3(0, 0, direction));
         }
-        Debug.Log("Speed: " + Mathf.Abs(direction));
         animator.SetFloat("Speed", Mathf.Abs(direction));
     }
 

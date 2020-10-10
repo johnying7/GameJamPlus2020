@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GroundContact : MonoBehaviour
 {
+    //UnityEvent
     public string[] groundTags;
     private bool isGrounded = true;
     private string groundie;
