@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
                 movingRight = false;
                 character.Rotate(new Vector3(0,180,0));
             }
-            transform.Translate(new Vector3(0, 0, direction));
+            character.Translate(new Vector3(0, 0, Mathf.Abs(direction)));
         }
         animator.SetFloat("Speed", Mathf.Abs(direction));
     }

@@ -575,6 +575,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!4 &543450653607750460 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 959254102257435531, guid: 04c4e5c949adca042a0cff26bcab30eb,
+    type: 3}
+  m_PrefabInstance: {fileID: 776112253225822391}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &776112253225822391
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -641,6 +647,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 776112252535391682, guid: 04c4e5c949adca042a0cff26bcab30eb,
+        type: 3}
+      propertyPath: character
+      value: 
+      objectReference: {fileID: 543450653607750460}
+    - target: {fileID: 959254102257435531, guid: 04c4e5c949adca042a0cff26bcab30eb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04c4e5c949adca042a0cff26bcab30eb, type: 3}
