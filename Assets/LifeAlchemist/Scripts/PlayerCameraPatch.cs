@@ -16,6 +16,6 @@ public class PlayerCameraPatch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cameraObject.transform.localPosition = new Vector3(-2, characterObject.transform.position.y, 0);
+        cameraObject.transform.localPosition = new Vector3(-2, characterObject.transform.position.y, cameraObject.transform.localPosition.z);
     }
 }
