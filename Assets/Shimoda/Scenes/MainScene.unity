@@ -508,6 +508,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00201a5961208e4d8238ec1be4671ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundTags:
+  - Ground
+  - Platform
 --- !u!136 &1068811590
 CapsuleCollider:
   m_ObjectHideFlags: 0
