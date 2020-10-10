@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    // just a small change
     public float speed;
     public float jumpForce;
     private bool movingRight = true;
@@ -16,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
         myRigidbody = character.GetComponent<Rigidbody>();
         if(speed <= 0) speed = 1f;
         if(jumpForce <= 0) jumpForce = 0.4f;
+        // Yet another small change
+        
     }
 
     void MoveHorizontal(){
