@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CraneController : MonoBehaviour
 {
+    public float timeToDropObject = 2.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,18 @@ public class CraneController : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Crane")
         {
-            Debug.Log("crane actions");
+            this.transform.parent.parent = other.transform;
+            this.GetComponent<Rigidbody>().isKinematic = true;
+            this.transform.parent.GetComponent<PlayerMovement>().enabled = false;
+            this.GetComponent<GroundContact>().enabled = false;
         }
+    }
+    
+    private void returnCharacterControl()
+    {
+        this.transform.parent.parent = null;
+        this.GetComponent<Rigidbody>().isKinematic = false;
+        this.transform.parent.GetComponent<PlayerMovement>().enabled = true;
+        this.GetComponent<GroundContact>().enabled = true;
     }
 }
