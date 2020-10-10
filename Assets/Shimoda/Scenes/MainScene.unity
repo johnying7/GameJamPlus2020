@@ -703,6 +703,31 @@ PrefabInstance:
       propertyPath: character
       value: 
       objectReference: {fileID: 543450653607750460}
+    - target: {fileID: 776112253116703851, guid: 04c4e5c949adca042a0cff26bcab30eb,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.016381841
+      objectReference: {fileID: 0}
+    - target: {fileID: 776112253116703851, guid: 04c4e5c949adca042a0cff26bcab30eb,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.0060000014
+      objectReference: {fileID: 0}
+    - target: {fileID: 776112253116703851, guid: 04c4e5c949adca042a0cff26bcab30eb,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.0006523033
+      objectReference: {fileID: 0}
+    - target: {fileID: 776112253116703851, guid: 04c4e5c949adca042a0cff26bcab30eb,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.0020697615
+      objectReference: {fileID: 0}
+    - target: {fileID: 776112253116703851, guid: 04c4e5c949adca042a0cff26bcab30eb,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.021286357
+      objectReference: {fileID: 0}
     - target: {fileID: 959254102257435531, guid: 04c4e5c949adca042a0cff26bcab30eb,
         type: 3}
       propertyPath: m_LocalPosition.z
