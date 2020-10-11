@@ -12,23 +12,26 @@ public class PlayerMovement : MonoBehaviour
     private float timer = 0.0f;
     private Rigidbody myRigidbody;
     private Transform character;
-    private GroundContact ground;
+    private PlayerTouch ground;
     private Animator animator;
+    private bool alive;
 
     // Start is called before the first frame update
     void Start()
     {
         character = transform.Find("Character");
         myRigidbody = character.GetComponent<Rigidbody>();
-        ground = character.GetComponent<GroundContact>();
+        ground = character.GetComponent<PlayerTouch>();
         animator = character.GetComponent<Animator>();
         if(speed <= 0) speed = 1f;
         if(jumpForce <= 0) jumpForce = 8f;
         if(jumpTime <= 0) jumpTime = 0.3f;
         // Yet another small change
         timer = jumpTime + 1;
+        alive = true;
         ground.BackToGround.AddListener(BackFromJump);
         ground.OffTheGround.AddListener(JumpStartForce);
+        ground.DeathTouch.AddListener(Death);
     }
 
     void MoveHorizontal(){
@@ -44,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
             }
             character.Translate(new Vector3(0, 0, Mathf.Abs(direction)));
         }
-        Debug.Log("Speed " + Mathf.Abs(direction/Time.deltaTime));
+        //Debug.Log("Speed " + Mathf.Abs(direction/Time.deltaTime));
         animator.SetFloat("Speed", Mathf.Abs(direction/Time.deltaTime));
     }
 
@@ -71,11 +74,18 @@ public class PlayerMovement : MonoBehaviour
         animator.SetTrigger("EndJump");
     }
 
+    void Death(){
+        animator.SetTrigger("Death");
+        alive = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        MoveHorizontal();
-        Jump();
+        if(alive){
+            MoveHorizontal();
+            Jump();
+        }
     }
 
 }

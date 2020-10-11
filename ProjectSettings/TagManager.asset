@@ -8,6 +8,7 @@ TagManager:
   - Platform
   - Trap
   - Crane
+  - Switch
   layers:
   - Default
   - TransparentFX
