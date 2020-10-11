@@ -84,7 +84,6 @@ public class PlayerTouch : MonoBehaviour
     }
 
     public void StandUpAnimEnd(){
-        Debug.Log("StandUpAnimEnd");
         if(StandUpAnimationEnd != null) StandUpAnimationEnd.Invoke();
     }
 }
