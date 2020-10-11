@@ -30,8 +30,16 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void respawnMovePlayer()
+    public IEnumerator respawnMovePlayer()
     {
+        //disable character controls here
+
+        //do death animation here
+
+        Debug.Log("Player is in dying mode.");
+        yield return new WaitForSeconds(1.0f);
+
+        //respawn player here
         playerTransform.position = respawnPosition;
         characterTransform.position = respawnPosition;
         Debug.Log("Respawn position: " + respawnPosition);
