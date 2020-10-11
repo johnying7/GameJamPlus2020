@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private bool alive;
     private bool switchCommand = false;
+    private bool punching = false;
 
     // Start is called before the first frame update
     void Start()
@@ -36,8 +37,27 @@ public class PlayerMovement : MonoBehaviour
         playerTouch.NearSwitch.AddListener(NearSwitch);
         playerTouch.AwayFromSwitch.AddListener(AwayFromSwitch);
         playerTouch.StandUpAnimationEnd.AddListener(RegainMovement);
+        playerTouch.PunchAnimationEnd.AddListener(RegainPunch);
+    }
+    void Update()
+    {
+        if(alive){
+            MoveHorizontal();
+            Jump();
+            MoveSwitch();
+            Punch();
+        } 
     }
 
+    void Punch(){
+        //if(Input.GetButton("Punchy") && !punching){
+            
+        //}
+    }
+
+    void RegainPunch(){
+        punching = false;
+    }
     void MoveHorizontal(){
         float direction = -Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         if(direction != 0){
@@ -97,15 +117,6 @@ public class PlayerMovement : MonoBehaviour
         alive = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(alive){
-            MoveHorizontal();
-            Jump();
-            MoveSwitch();
-        } 
-    }
 
     void MoveSwitch(){
         if(switchCommand && Input.GetButton("Submit")){

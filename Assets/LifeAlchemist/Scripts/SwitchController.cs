@@ -33,8 +33,9 @@ public class SwitchController : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && !canActivate)
         {
+            Debug.Log("Arriving at switch");
             playerTouch = other.GetComponent<PlayerTouch>();
             playerTouch.SwitchAnimationEnd.AddListener(TriggerSwitchEvent);
             canActivate = true;
@@ -42,8 +43,9 @@ public class SwitchController : MonoBehaviour
     }
 
     private void OnTriggerExit(Collider other) {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && canActivate)
         {
+            Debug.Log("Leaving switch");
             playerTouch.SwitchAnimationEnd.RemoveListener(TriggerSwitchEvent);
             playerTouch = null;
             canActivate = false;

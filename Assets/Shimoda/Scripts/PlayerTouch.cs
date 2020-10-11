@@ -13,6 +13,8 @@ public class PlayerTouch : MonoBehaviour
     public UnityEvent NearSwitch;
     public UnityEvent AwayFromSwitch;
     public UnityEvent SwitchAnimationEnd; 
+    public UnityEvent PunchAnimationHit; 
+    public UnityEvent PunchAnimationEnd; 
     
     public string[] groundTags;
     public string[] deathTags;
@@ -31,6 +33,8 @@ public class PlayerTouch : MonoBehaviour
         if(DeathAnimationEnd == null) DeathAnimationEnd = new UnityEvent();
         if(SwitchAnimationEnd == null) SwitchAnimationEnd = new UnityEvent();
         if(StandUpAnimationEnd == null) StandUpAnimationEnd = new UnityEvent();
+        if(PunchAnimationHit == null) PunchAnimationHit = new UnityEvent();
+        if(PunchAnimationEnd == null) PunchAnimationEnd = new UnityEvent();
 
         foreach(string gnd in groundTags){
             groundie += "|" + gnd + "|"; 
@@ -85,5 +89,14 @@ public class PlayerTouch : MonoBehaviour
 
     public void StandUpAnimEnd(){
         if(StandUpAnimationEnd != null) StandUpAnimationEnd.Invoke();
+    }
+    public void PunchAnimHit(){
+        if(PunchAnimationHit != null) PunchAnimationHit.Invoke();
+
+    }
+
+    public void PunchAnimEnd(){
+        if(PunchAnimationEnd != null) PunchAnimationEnd.Invoke();
+
     }
 }
