@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovingPlatform : MonoBehaviour
 {
     public bool activatePlatformWithSwitch = false;
+    public bool stopAtLastPosition = false;
     public Transform platform;
     public List<Transform> platformPositions; //list of positions the platform will move to (in order)
     public List<float> platformStationaryTimeLength; //list of the amount of time the platform will stay at each platform position
@@ -67,6 +68,10 @@ public class MovingPlatform : MonoBehaviour
         if (currentIndex == platformPositions.Count - 1)
         {
             currentIndex = 0;
+            if (stopAtLastPosition)
+            {
+                this.enabled = false;
+            }
         }
         else
         {

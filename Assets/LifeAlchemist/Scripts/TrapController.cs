@@ -6,7 +6,7 @@ public class TrapController : MonoBehaviour
 {
     public bool startTrapOn = true;
     public float trapOnDuration = 2.0f;
-    public float trapOffDuration = 1.0f;
+    public float trapOffDuration = 0;
     public GameObject trapGameObject;
 
     private bool isTrapOn;

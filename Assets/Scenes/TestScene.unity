@@ -394,6 +394,11 @@ PrefabInstance:
       propertyPath: activatePlatformWithSwitch
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2970409713962974937, guid: 8c1fffa68cfb9d345aee2fe4c43533a6,
+        type: 3}
+      propertyPath: stopAtLastPosition
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2970409713962974938, guid: 8c1fffa68cfb9d345aee2fe4c43533a6,
         type: 3}
       propertyPath: m_LocalPosition.x
