@@ -12,11 +12,16 @@ public class PlayerMovement : MonoBehaviour
     private float timer = 0.0f;
     private Rigidbody myRigidbody;
     private Transform character;
+    private GroundDetector gndDetector;
+    private BodyDetector bdyDetector;
+    private FrontDetector fntDetector; 
     private PlayerTouch playerTouch;
     private Animator animator;
     private bool alive;
     private bool switchCommand = false;
     private bool punching = false;
+    private bool sunlightStrength = false;
+    public bool pushing = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,13 +36,26 @@ public class PlayerMovement : MonoBehaviour
         // Yet another small change
         timer = jumpTime + 1;
         alive = true;
-        playerTouch.BackToGround.AddListener(BackFromJump);
         playerTouch.OffTheGround.AddListener(JumpStartForce);
         //playerTouch.DeathTouch.AddListener(Death); -> relegated to Game Manager 
-        playerTouch.NearSwitch.AddListener(NearSwitch);
-        playerTouch.AwayFromSwitch.AddListener(AwayFromSwitch);
         playerTouch.StandUpAnimationEnd.AddListener(RegainMovement);
         playerTouch.PunchAnimationEnd.AddListener(RegainPunch);
+
+        Transform gndTrigger = character.Find("GndTrigger");
+        gndDetector = gndTrigger.GetComponent<GroundDetector>();
+        gndDetector.BackToGround.AddListener(BackFromJump);
+        
+        Transform bdyTrigger = character.Find("BdyTrigger");
+        bdyDetector = bdyTrigger.GetComponent<BodyDetector>();
+        bdyDetector.NearSwitch.AddListener(NearSwitch);
+        bdyDetector.AwayFromSwitch.AddListener(AwayFromSwitch);
+        bdyDetector.EnterSunlight.AddListener(ActivateSunlight);
+        bdyDetector.LeaveSunlight.AddListener(DeactivateSunlight);
+
+        Transform fntTrigger = character.Find("FntTrigger");
+        fntDetector = fntTrigger.GetComponent<FrontDetector>();
+        fntDetector.EnterPushable.AddListener(()=>{Debug.Log("Can Push");pushing = true;});
+        fntDetector.LeavePushable.AddListener(()=>{Debug.Log("Cannot Push");pushing = false;});
     }
     void Update()
     {
@@ -49,10 +67,11 @@ public class PlayerMovement : MonoBehaviour
         } 
     }
 
+    void MoveBoxes(){
+        
+    }
+
     void Punch(){
-        //if(Input.GetButton("Punchy") && !punching){
-            
-        //}
     }
 
     void RegainPunch(){
@@ -69,14 +88,20 @@ public class PlayerMovement : MonoBehaviour
                 movingRight = false;
                 character.Rotate(new Vector3(0,180,0));
             }
+            Debug.Log("Direction: " + direction + ", Pushing: " + pushing);
             character.Translate(new Vector3(0, 0, Mathf.Abs(direction)));
+            animator.SetBool("Pushing", pushing);
+        }
+        else{
+            animator.SetBool("Pushing", false);
+            
         }
         //Debug.Log("Speed " + Mathf.Abs(direction/Time.deltaTime));
         animator.SetFloat("Speed", Mathf.Abs(direction/Time.deltaTime));
     }
 
     void Jump(){
-        if(Input.GetButton("Jump") && playerTouch.Check() && timer >= jumpTime){
+        if(Input.GetButton("Jump") && gndDetector.Check() && timer >= jumpTime){
             //
             timer = 0.0f;
             // Triggers jump Animation
@@ -133,6 +158,14 @@ public class PlayerMovement : MonoBehaviour
     }
     void AwayFromSwitch(){
         switchCommand = false;
+    }
+    public void ActivateSunlight() {
+        Debug.Log("Empowered Log");
+        sunlightStrength = true;
+    }
+    public void DeactivateSunlight() {
+        Debug.Log("Depowered Log");
+        sunlightStrength = false;
     }
 
 }

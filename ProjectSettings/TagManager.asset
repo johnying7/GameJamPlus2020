@@ -9,6 +9,8 @@ TagManager:
   - Trap
   - Crane
   - Switch
+  - Pushable
+  - SunlightPowerup
   layers:
   - Default
   - TransparentFX
