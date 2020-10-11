@@ -11,10 +11,4 @@ public class CheckPointManager : MonoBehaviour
     {
         dirtGroundCheckPoint.initializeRespawnPosition(respawnPoint.position);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
