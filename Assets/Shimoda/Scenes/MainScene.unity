@@ -335,9 +335,11 @@ GameObject:
   - component: {fileID: 1162574889}
   - component: {fileID: 1162574888}
   - component: {fileID: 1162574887}
+  - component: {fileID: 1162574890}
+  - component: {fileID: 1162574891}
   m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
+  m_Name: Switch
+  m_TagString: Switch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -416,6 +418,47 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162574885}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1162574890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162574885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4744c79a8063d4fa802033b827bb2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myUnityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1162574891}
+        m_MethodName: ChangeColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1162574891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162574885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eb16dbed6ce3b64e892ff3846850ba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialList:
+  - {fileID: 2100000, guid: 3b7e39e142dbee143939a281edcd10a3, type: 2}
+  - {fileID: 2100000, guid: 08413f4c5d24c064ea1479eee9c4ddcf, type: 2}
 --- !u!1 &1208400739
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,10 +864,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -4.9343324
       objectReference: {fileID: 0}
+    - target: {fileID: 433511229438581041, guid: 04c4e5c949adca042a0cff26bcab30eb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 776112251333085266, guid: 04c4e5c949adca042a0cff26bcab30eb,
         type: 3}
       propertyPath: speed
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 776112251333085266, guid: 04c4e5c949adca042a0cff26bcab30eb,
+        type: 3}
+      propertyPath: jumpForce
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 776112251333085267, guid: 04c4e5c949adca042a0cff26bcab30eb,
         type: 3}
@@ -886,6 +939,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 776112251333085268, guid: 04c4e5c949adca042a0cff26bcab30eb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 776112252535391682, guid: 04c4e5c949adca042a0cff26bcab30eb,
         type: 3}
       propertyPath: character
@@ -923,8 +981,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 776112253116703852, guid: 04c4e5c949adca042a0cff26bcab30eb,
         type: 3}
+      propertyPath: switchTags.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 776112253116703852, guid: 04c4e5c949adca042a0cff26bcab30eb,
+        type: 3}
       propertyPath: deathTags.Array.data[0]
       value: Trap
+      objectReference: {fileID: 0}
+    - target: {fileID: 776112253116703852, guid: 04c4e5c949adca042a0cff26bcab30eb,
+        type: 3}
+      propertyPath: switchTags.Array.data[0]
+      value: Switch
       objectReference: {fileID: 0}
     - target: {fileID: 959254102257435531, guid: 04c4e5c949adca042a0cff26bcab30eb,
         type: 3}

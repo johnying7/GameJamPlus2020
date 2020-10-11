@@ -13,20 +13,27 @@ public class PlayerTouch : MonoBehaviour
     
     public string[] groundTags;
     public string[] deathTags;
+    public string[] switchTags;
     private bool isGrounded = true;
     private string groundie;
     private string deathie;
+    private string switchie;
 
     void Start(){
         if(BackToGround == null) BackToGround = new UnityEvent();
         if(OffTheGround == null) OffTheGround = new UnityEvent();
         if(DeathTouch == null) DeathTouch = new UnityEvent();
+        if(NearSwitch == null) NearSwitch = new UnityEvent();
+        if(AwayFromSwitch == null) AwayFromSwitch = new UnityEvent();
 
         foreach(string gnd in groundTags){
             groundie += "|" + gnd + "|"; 
         }
         foreach(string dth in deathTags){
             deathie += "|" + dth + "|";
+        }
+        foreach(string sth in switchTags){
+            switchie +=  "|" + sth + "|";
         }
     }
     public bool Check(){
@@ -41,14 +48,20 @@ public class PlayerTouch : MonoBehaviour
             if(BackToGround != null) BackToGround.Invoke();
         } else if (deathie.IndexOf("|"+other.tag+"|") >= 0){
             if(DeathTouch != null) DeathTouch.Invoke();
+        } else if(switchie.IndexOf("|"+other.tag+"|") >= 0){
+            if(NearSwitch != null) NearSwitch.Invoke();
         }
+
+
     }
     private void OnTriggerExit(Collider other){
         //Debug.Log("TriggerExit: " + other.tag);
         if(groundie.IndexOf("|" + other.tag + "|") >=0){
             //Debug.Log("Floating in the air");
             isGrounded = false;
-        } 
+        } else if(switchie.IndexOf("|"+other.tag+"|") >= 0){
+            if(AwayFromSwitch != null) AwayFromSwitch.Invoke();
+        }
     }
     public void JumpAnimStarted(){
         //Debug.Log("Whoa");

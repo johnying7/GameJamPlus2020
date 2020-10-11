@@ -12,16 +12,17 @@ public class PlayerMovement : MonoBehaviour
     private float timer = 0.0f;
     private Rigidbody myRigidbody;
     private Transform character;
-    private PlayerTouch ground;
+    private PlayerTouch playerTouch;
     private Animator animator;
     private bool alive;
+    private bool switchCommand = false;
 
     // Start is called before the first frame update
     void Start()
     {
         character = transform.Find("Character");
         myRigidbody = character.GetComponent<Rigidbody>();
-        ground = character.GetComponent<PlayerTouch>();
+        playerTouch = character.GetComponent<PlayerTouch>();
         animator = character.GetComponent<Animator>();
         if(speed <= 0) speed = 1f;
         if(jumpForce <= 0) jumpForce = 8f;
@@ -29,9 +30,12 @@ public class PlayerMovement : MonoBehaviour
         // Yet another small change
         timer = jumpTime + 1;
         alive = true;
-        ground.BackToGround.AddListener(BackFromJump);
-        ground.OffTheGround.AddListener(JumpStartForce);
-        ground.DeathTouch.AddListener(Death);
+        playerTouch.BackToGround.AddListener(BackFromJump);
+        playerTouch.OffTheGround.AddListener(JumpStartForce);
+        playerTouch.DeathTouch.AddListener(Death);
+        playerTouch.NearSwitch.AddListener(NearSwitch);
+        playerTouch.AwayFromSwitch.AddListener(AwayFromSwitch);
+
     }
 
     void MoveHorizontal(){
@@ -52,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Jump(){
-        if(Input.GetButton("Jump") && ground.Check() && timer >= jumpTime){
+        if(Input.GetButton("Jump") && playerTouch.Check() && timer >= jumpTime){
             //
             timer = 0.0f;
             // Triggers jump Animation
@@ -70,11 +74,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void BackFromJump(){
-        animator.SetBool("Jumping",false);
-        animator.SetTrigger("EndJump");
+        if(alive){
+            animator.SetBool("Jumping",false);
+            animator.SetTrigger("EndJump");
+        }
     }
 
     void Death(){
+        animator.SetFloat("Speed", 0);
         animator.SetTrigger("Death");
         alive = false;
     }
@@ -85,7 +92,21 @@ public class PlayerMovement : MonoBehaviour
         if(alive){
             MoveHorizontal();
             Jump();
+            MoveSwitch();
+        } 
+    }
+
+    void MoveSwitch(){
+        if(switchCommand && Input.GetButton("Submit")){
+            animator.SetTrigger("Switch");
         }
+    }
+
+    void NearSwitch(){
+        switchCommand = true;
+    }
+    void AwayFromSwitch(){
+        switchCommand = false;
     }
 
 }
