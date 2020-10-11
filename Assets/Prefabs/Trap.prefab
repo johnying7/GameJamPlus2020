@@ -233,5 +233,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTrapOn: 1
   trapOnDuration: 2
-  trapOffDuration: 1
+  trapOffDuration: 0
   trapGameObject: {fileID: 6388357579683347748}
