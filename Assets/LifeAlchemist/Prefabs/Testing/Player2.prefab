@@ -2247,9 +2247,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00201a5961208e4d8238ec1be4671ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathTouch:
+    m_PersistentCalls:
+      m_Calls: []
+  OffTheGround:
+    m_PersistentCalls:
+      m_Calls: []
+  BackToGround:
+    m_PersistentCalls:
+      m_Calls: []
+  NearSwitch:
+    m_PersistentCalls:
+      m_Calls: []
+  AwayFromSwitch:
+    m_PersistentCalls:
+      m_Calls: []
   groundTags:
   - Ground
   - Platform
+  deathTags: []
+  switchTags: []
 --- !u!114 &3145599049212758141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2420,6 +2437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f6358dee1128d74589f5c7111dbfa7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterGap: 0
   character: {fileID: 9019331916549225145}
 --- !u!1 &8836524171403981158
 GameObject:
@@ -2467,8 +2485,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e8b61073442cbc41a17a2c51c74e5b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  jumpForce: 4
+  speed: 4
+  jumpForce: 5
   jumpTime: 0.3
 --- !u!114 &2170151055577125967
 MonoBehaviour:
