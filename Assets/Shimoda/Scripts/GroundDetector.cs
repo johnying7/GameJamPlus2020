@@ -24,14 +24,14 @@ public class GroundDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other){
         if(groundie.IndexOf("|" + other.tag + "|") >=0){
-            Debug.Log("You're grounded");
+            //Debug.Log("You're grounded");
             isGrounded = true;
             if(BackToGround != null) BackToGround.Invoke();
         }
     }
     private void OnTriggerExit(Collider other){
         if(groundie.IndexOf("|" + other.tag + "|") >=0){
-            Debug.Log("Floating in the air");
+            //Debug.Log("Floating in the air");
             isGrounded = false;
         } 
     }

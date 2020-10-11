@@ -50,12 +50,12 @@ public class PlayerMovement : MonoBehaviour
         bdyDetector.NearSwitch.AddListener(NearSwitch);
         bdyDetector.AwayFromSwitch.AddListener(AwayFromSwitch);
         bdyDetector.EnterSunlight.AddListener(ActivateSunlight);
-        bdyDetector.LeaveSunlight.AddListener(DeactivateSunlight);
+        //bdyDetector.LeaveSunlight.AddListener(DeactivateSunlight);
 
         Transform fntTrigger = character.Find("FntTrigger");
         fntDetector = fntTrigger.GetComponent<FrontDetector>();
-        fntDetector.EnterPushable.AddListener(()=>{Debug.Log("Can Push");pushing = true;});
-        fntDetector.LeavePushable.AddListener(()=>{Debug.Log("Cannot Push");pushing = false;});
+        fntDetector.EnterPushable.AddListener(()=>{/*Debug.Log("Can Push");*/pushing = true;});
+        fntDetector.LeavePushable.AddListener(()=>{/*Debug.Log("Cannot Push");*/pushing = false;});
     }
     void Update()
     {
@@ -88,7 +88,10 @@ public class PlayerMovement : MonoBehaviour
                 movingRight = false;
                 character.Rotate(new Vector3(0,180,0));
             }
-            Debug.Log("Direction: " + direction + ", Pushing: " + pushing);
+            //Debug.Log("Direction: " + direction + ", Pushing: " + pushing);
+            if(pushing && sunlightStrength){
+                fntDetector.MakeItMove();
+            }
             character.Translate(new Vector3(0, 0, Mathf.Abs(direction)));
             animator.SetBool("Pushing", pushing);
         }
@@ -132,6 +135,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger("Death");
             Debug.Log("Executing death method.");
             alive = false;
+            DeactivateSunlight();
         }
     }
 
@@ -162,10 +166,12 @@ public class PlayerMovement : MonoBehaviour
     public void ActivateSunlight() {
         Debug.Log("Empowered Log");
         sunlightStrength = true;
+        fntDetector.MakeItMove();
     }
     public void DeactivateSunlight() {
         Debug.Log("Depowered Log");
         sunlightStrength = false;
+        fntDetector.FreezeIt();
     }
 
 }

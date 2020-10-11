@@ -19,26 +19,43 @@ public class FrontDetector : MonoBehaviour
         if(other.tag == pushableTag){
             Debug.Log("There is a pushable object in front");
             pushableBody = other.GetComponent<Rigidbody>();
-            pushableBody.constraints = RigidbodyConstraints.FreezeRotationX | 
-                                       RigidbodyConstraints.FreezeRotationY | 
-                                       RigidbodyConstraints.FreezeRotationZ | 
-                                       RigidbodyConstraints.FreezePositionY | 
-                                       RigidbodyConstraints.FreezePositionZ;
             if(EnterPushable != null) EnterPushable.Invoke();
         } 
     }
     private void OnTriggerExit(Collider other){
         if(other.tag == pushableTag){
             Debug.Log("Left Pushable object realm");
-            pushableBody.constraints = RigidbodyConstraints.FreezeRotationX | 
-                                       RigidbodyConstraints.FreezeRotationY | 
-                                       RigidbodyConstraints.FreezeRotationZ | 
-                                       RigidbodyConstraints.FreezePositionX | 
-                                       RigidbodyConstraints.FreezePositionY | 
-                                       RigidbodyConstraints.FreezePositionZ;
+            FreezeIt();
             pushableBody = null;
             if(LeavePushable != null) LeavePushable.Invoke();
         } 
+    }
+
+    public void MakeItMove(){
+        if(pushableBody != null)
+        {
+            Debug.Log("Changing Constraints");
+            pushableBody.constraints =  RigidbodyConstraints.FreezeRotationX | 
+                                        RigidbodyConstraints.FreezeRotationY | 
+                                        RigidbodyConstraints.FreezeRotationZ | 
+                                        RigidbodyConstraints.FreezePositionY | 
+                                        RigidbodyConstraints.FreezePositionZ;
+
+        }
+
+    }
+
+    public void FreezeIt(){
+        if(pushableBody != null)
+        {
+            Debug.Log("Freezing Constraints");
+            pushableBody.constraints = RigidbodyConstraints.FreezeRotationX | 
+                                        RigidbodyConstraints.FreezeRotationY | 
+                                        RigidbodyConstraints.FreezeRotationZ | 
+                                        RigidbodyConstraints.FreezePositionX | 
+                                        RigidbodyConstraints.FreezePositionY | 
+                                        RigidbodyConstraints.FreezePositionZ;
+        }
     }
 
 }
