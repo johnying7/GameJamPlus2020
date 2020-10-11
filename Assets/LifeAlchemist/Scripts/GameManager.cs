@@ -43,6 +43,9 @@ public class GameManager : MonoBehaviour
         playerTransform.position = respawnPosition;
         characterTransform.position = respawnPosition;
         Debug.Log("Respawn position: " + respawnPosition);
+
+        //resume character controls here
+        
     }
 
     public void setRespawnPosition(Vector3 position)
