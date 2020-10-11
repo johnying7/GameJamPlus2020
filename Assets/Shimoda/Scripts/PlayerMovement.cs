@@ -32,10 +32,10 @@ public class PlayerMovement : MonoBehaviour
         alive = true;
         playerTouch.BackToGround.AddListener(BackFromJump);
         playerTouch.OffTheGround.AddListener(JumpStartForce);
-        playerTouch.DeathTouch.AddListener(Death);
+        //playerTouch.DeathTouch.AddListener(Death); -> relegated to Game Manager 
         playerTouch.NearSwitch.AddListener(NearSwitch);
         playerTouch.AwayFromSwitch.AddListener(AwayFromSwitch);
-
+        playerTouch.StandUpAnimationEnd.AddListener(RegainMovement);
     }
 
     void MoveHorizontal(){
@@ -80,10 +80,21 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Death(){
+    public void Death(){
         animator.SetFloat("Speed", 0);
         animator.SetTrigger("Death");
         alive = false;
+    }
+
+    public void Ressurect(){
+        Debug.Log("Playing standUp animation");
+        animator.SetTrigger("StandUp");
+    }
+
+    public void RegainMovement(){
+        Debug.Log("Regain Movement after respawn");
+        animator.SetTrigger("BackToAction");
+        alive = true;
     }
 
     // Update is called once per frame
