@@ -42,6 +42,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7685046234342697852}
   - component: {fileID: 7685046234342697853}
+  - component: {fileID: 7754109827166566204}
+  - component: {fileID: 4417229887625769218}
   m_Layer: 0
   m_Name: RespawnPoint
   m_TagString: Untagged
@@ -76,6 +78,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   widgetRadius: 1
+--- !u!114 &7754109827166566204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7685046234342697855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa1dc03a32038634a982f136814655e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &4417229887625769218
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7685046234342697855}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7685046235292074599
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,8 +114,6 @@ GameObject:
   - component: {fileID: 7685046235292074584}
   - component: {fileID: 7685046235292074587}
   - component: {fileID: 7685046235292074586}
-  - component: {fileID: 7685046235292074597}
-  - component: {fileID: 7685046235292074596}
   m_Layer: 0
   m_Name: DirtGround
   m_TagString: Untagged
@@ -157,28 +182,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &7685046235292074597
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7685046235292074599}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7685046235292074596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7685046235292074599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa1dc03a32038634a982f136814655e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
