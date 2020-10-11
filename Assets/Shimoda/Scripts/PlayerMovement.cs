@@ -101,9 +101,13 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void Death(){
-        animator.SetFloat("Speed", 0);
-        animator.SetTrigger("Death");
-        alive = false;
+        if (alive)
+        {
+            animator.SetFloat("Speed", 0);
+            animator.SetTrigger("Death");
+            Debug.Log("Executing death method.");
+            alive = false;
+        }
     }
 
     public void Ressurect(){
