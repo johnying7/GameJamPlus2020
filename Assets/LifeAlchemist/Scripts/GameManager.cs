@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public Transform initialRespawnPosition;
     public Transform playerTransform;
     private Vector3 respawnPosition;
+    private Transform characterTransform;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Must set player transform in game manager.");
         }
 
-        Transform characterTransform = playerTransform.Find("Character");
+        characterTransform = playerTransform.Find("Character");
         if (playerTransform.Find("Character").tag != "Player")
         {
             characterTransform.tag = "Player";
@@ -32,6 +33,8 @@ public class GameManager : MonoBehaviour
     public void respawnMovePlayer()
     {
         playerTransform.position = respawnPosition;
+        characterTransform.position = respawnPosition;
+        Debug.Log("Respawn position: " + respawnPosition);
     }
 
     public void setRespawnPosition(Vector3 position)

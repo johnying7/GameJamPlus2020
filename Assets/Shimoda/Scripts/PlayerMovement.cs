@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
             }
             character.Translate(new Vector3(0, 0, Mathf.Abs(direction)));
         }
-        Debug.Log("Speed " + Mathf.Abs(direction/Time.deltaTime));
+        //Debug.Log("Speed " + Mathf.Abs(direction/Time.deltaTime));
         animator.SetFloat("Speed", Mathf.Abs(direction/Time.deltaTime));
     }
 
