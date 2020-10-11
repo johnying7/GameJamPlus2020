@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public Transform playerTransform;
     private Vector3 respawnPosition;
     private Transform characterTransform;
+    private PlayerTouch playerTouch;
+    private PlayerMovement playerMovement;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,12 +17,14 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("Must set player transform in game manager.");
         }
-
+        playerMovement = playerTransform.GetComponent<PlayerMovement>();
         characterTransform = playerTransform.Find("Character");
         if (playerTransform.Find("Character").tag != "Player")
         {
             characterTransform.tag = "Player";
         }
+        playerTouch = characterTransform.GetComponent<PlayerTouch>();
+        playerTouch.DeathAnimationEnd.AddListener(respawnPlayer);
         respawnPosition = initialRespawnPosition.position;
     }
 
@@ -30,22 +34,18 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public IEnumerator respawnMovePlayer()
-    {
-        //disable character controls here
-
-        //do death animation here
-
-        Debug.Log("Player is in dying mode.");
-        yield return new WaitForSeconds(1.0f);
-
+    void respawnPlayer(){
         //respawn player here
         playerTransform.position = respawnPosition;
         characterTransform.position = respawnPosition;
         Debug.Log("Respawn position: " + respawnPosition);
+        playerMovement.Ressurect();
+    }
 
-        //resume character controls here
-        
+    public void respawnMovePlayer()
+    {
+        playerMovement.Death();
+        Debug.Log("Player is in dying mode.");
     }
 
     public void setRespawnPosition(Vector3 position)

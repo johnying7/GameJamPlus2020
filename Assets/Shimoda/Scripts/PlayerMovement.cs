@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private bool alive;
     private bool switchCommand = false;
+    private bool punching = false;
 
     // Start is called before the first frame update
     void Start()
@@ -32,12 +33,31 @@ public class PlayerMovement : MonoBehaviour
         alive = true;
         playerTouch.BackToGround.AddListener(BackFromJump);
         playerTouch.OffTheGround.AddListener(JumpStartForce);
-        playerTouch.DeathTouch.AddListener(Death);
+        //playerTouch.DeathTouch.AddListener(Death); -> relegated to Game Manager 
         playerTouch.NearSwitch.AddListener(NearSwitch);
         playerTouch.AwayFromSwitch.AddListener(AwayFromSwitch);
-
+        playerTouch.StandUpAnimationEnd.AddListener(RegainMovement);
+        playerTouch.PunchAnimationEnd.AddListener(RegainPunch);
+    }
+    void Update()
+    {
+        if(alive){
+            MoveHorizontal();
+            Jump();
+            MoveSwitch();
+            Punch();
+        } 
     }
 
+    void Punch(){
+        //if(Input.GetButton("Punchy") && !punching){
+            
+        //}
+    }
+
+    void RegainPunch(){
+        punching = false;
+    }
     void MoveHorizontal(){
         float direction = -Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         if(direction != 0){
@@ -80,21 +100,23 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Death(){
+    public void Death(){
         animator.SetFloat("Speed", 0);
         animator.SetTrigger("Death");
         alive = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(alive){
-            MoveHorizontal();
-            Jump();
-            MoveSwitch();
-        } 
+    public void Ressurect(){
+        Debug.Log("Playing standUp animation");
+        animator.SetTrigger("StandUp");
     }
+
+    public void RegainMovement(){
+        Debug.Log("Regain Movement after respawn");
+        animator.SetTrigger("BackToAction");
+        alive = true;
+    }
+
 
     void MoveSwitch(){
         if(switchCommand && Input.GetButton("Submit")){

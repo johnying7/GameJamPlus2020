@@ -20,6 +20,6 @@ public class TrapMechanism : MonoBehaviour
 
     private void killPlayer()
     {
-        StartCoroutine(gameManager.respawnMovePlayer());
+        gameManager.respawnMovePlayer();
     }
 }

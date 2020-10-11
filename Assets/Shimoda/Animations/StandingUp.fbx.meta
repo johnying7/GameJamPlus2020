@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: ce5e08bcf231727428768f3f0572eb4d
+guid: f36613f9550949145b6cc261fa938cec
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: ButtonPushing
+    second: StandUp
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: ButtonPushing
+      name: StandUp
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 97
+      lastFrame: 228
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -59,8 +59,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.62188834
-        functionName: SwitchAnimEnd
+      - time: 1
+        functionName: StandUpAnimEnd
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: c00201a5961208e4d8238ec1be4671ff,
           type: 3}

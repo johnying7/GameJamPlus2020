@@ -5,11 +5,16 @@ using UnityEngine.Events;
 
 public class PlayerTouch : MonoBehaviour
 {
-    public UnityEvent DeathTouch;
+    //public UnityEvent DeathTouch;
+    public UnityEvent DeathAnimationEnd;
+    public UnityEvent StandUpAnimationEnd;
     public UnityEvent OffTheGround;
     public UnityEvent BackToGround;
     public UnityEvent NearSwitch;
     public UnityEvent AwayFromSwitch;
+    public UnityEvent SwitchAnimationEnd; 
+    public UnityEvent PunchAnimationHit; 
+    public UnityEvent PunchAnimationEnd; 
     
     public string[] groundTags;
     public string[] deathTags;
@@ -22,9 +27,14 @@ public class PlayerTouch : MonoBehaviour
     void Start(){
         if(BackToGround == null) BackToGround = new UnityEvent();
         if(OffTheGround == null) OffTheGround = new UnityEvent();
-        if(DeathTouch == null) DeathTouch = new UnityEvent();
+        //if(DeathTouch == null) DeathTouch = new UnityEvent();
         if(NearSwitch == null) NearSwitch = new UnityEvent();
         if(AwayFromSwitch == null) AwayFromSwitch = new UnityEvent();
+        if(DeathAnimationEnd == null) DeathAnimationEnd = new UnityEvent();
+        if(SwitchAnimationEnd == null) SwitchAnimationEnd = new UnityEvent();
+        if(StandUpAnimationEnd == null) StandUpAnimationEnd = new UnityEvent();
+        if(PunchAnimationHit == null) PunchAnimationHit = new UnityEvent();
+        if(PunchAnimationEnd == null) PunchAnimationEnd = new UnityEvent();
 
         foreach(string gnd in groundTags){
             groundie += "|" + gnd + "|"; 
@@ -41,14 +51,14 @@ public class PlayerTouch : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other){
-        Debug.Log("TriggerEnter: " + other.tag);
+        //Debug.Log("TriggerEnter: " + other.tag);
         if(groundie.IndexOf("|" + other.tag + "|") >=0){
             //Debug.Log("You're grounded");
             isGrounded = true;
             if(BackToGround != null) BackToGround.Invoke();
-        } else if (deathie.IndexOf("|"+other.tag+"|") >= 0){
+        } /*else if (deathie.IndexOf("|"+other.tag+"|") >= 0){
             if(DeathTouch != null) DeathTouch.Invoke();
-        } else if(switchie.IndexOf("|"+other.tag+"|") >= 0){
+        }*/ else if(switchie.IndexOf("|"+other.tag+"|") >= 0){
             if(NearSwitch != null) NearSwitch.Invoke();
         }
 
@@ -68,4 +78,25 @@ public class PlayerTouch : MonoBehaviour
         if(OffTheGround != null) OffTheGround.Invoke();
     }
 
+    public void DeathAnimEnd(){
+        if(DeathAnimationEnd != null) DeathAnimationEnd.Invoke();
+
+    }
+
+    public void SwitchAnimEnd(){
+        if(SwitchAnimationEnd != null) SwitchAnimationEnd.Invoke();
+    }
+
+    public void StandUpAnimEnd(){
+        if(StandUpAnimationEnd != null) StandUpAnimationEnd.Invoke();
+    }
+    public void PunchAnimHit(){
+        if(PunchAnimationHit != null) PunchAnimationHit.Invoke();
+
+    }
+
+    public void PunchAnimEnd(){
+        if(PunchAnimationEnd != null) PunchAnimationEnd.Invoke();
+
+    }
 }

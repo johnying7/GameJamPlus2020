@@ -9,6 +9,8 @@ public class SwitchController : MonoBehaviour
 
     private bool canActivate = false;
 
+    private PlayerTouch playerTouch;
+
     public 
     // Start is called before the first frame update
     void Start()
@@ -19,23 +21,33 @@ public class SwitchController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetButtonDown("Submit") && canActivate)
         {
-            Debug.Log("activating switch");
-            myUnityEvent.Invoke();
-        }
+            playerTouch
+        }*/
+    }
+
+    void TriggerSwitchEvent(){
+        myUnityEvent.Invoke();
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && !canActivate)
         {
+            Debug.Log("Arriving at switch");
+            playerTouch = other.GetComponent<PlayerTouch>();
+            playerTouch.SwitchAnimationEnd.AddListener(TriggerSwitchEvent);
             canActivate = true;
         }
     }
 
     private void OnTriggerExit(Collider other) {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && canActivate)
         {
+            Debug.Log("Leaving switch");
+            playerTouch.SwitchAnimationEnd.RemoveListener(TriggerSwitchEvent);
+            playerTouch = null;
             canActivate = false;
         }
     }
