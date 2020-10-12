@@ -35,10 +35,12 @@ public class PlayerCraneController : MonoBehaviour
     
     public void detachPlayerFromCrane()
     {
-        this.transform.parent.parent = null;
-        this.GetComponent<Rigidbody>().isKinematic = false;
-        this.transform.parent.GetComponent<PlayerMovement>().enabled = true;
-        this.GetComponent<PlayerTouch>().enabled = true;
+        Transform character = this.transform.parent;
+        Transform player = character.parent;
+        player.parent = null;
+        character.GetComponent<Rigidbody>().isKinematic = false;
+        player.GetComponent<PlayerMovement>().enabled = true;
+        character.GetComponent<PlayerTouch>().enabled = true;
     }
 
     public void attachPlayerToCrane()
@@ -47,9 +49,11 @@ public class PlayerCraneController : MonoBehaviour
         {
             return;
         }
-        this.transform.parent.parent = other.transform;
-        this.GetComponent<Rigidbody>().isKinematic = true;
-        this.transform.parent.GetComponent<PlayerMovement>().enabled = false;
-        this.GetComponent<PlayerTouch>().enabled = false;
+        Transform character = this.transform.parent;
+        Transform player = character.parent;
+        player.parent = other.transform;
+        character.GetComponent<Rigidbody>().isKinematic = true;
+        player.GetComponent<PlayerMovement>().enabled = false;
+        character.GetComponent<PlayerTouch>().enabled = false;
     }
 }
