@@ -8,12 +8,14 @@ public class CheckPoint : MonoBehaviour
     public void initializeRespawnPosition(Vector3 position)
     {
         respawnPosition = position;
+        Debug.Log("Initializing respawn position to: " + position);
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag == "PlayerGroundTrigger")
+        if (other.tag == "PlayerBodyTrigger")
         {
             GameObject.FindWithTag("GameController").GetComponent<GameManager>().setRespawnPosition(respawnPosition);
+            Debug.Log("Moving/Respawning player to: " + respawnPosition);
         }
     }
 }
