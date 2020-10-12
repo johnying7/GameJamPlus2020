@@ -791,6 +791,7 @@ GameObject:
   - component: {fileID: 4888098012844264619}
   - component: {fileID: 7839564546828737449}
   - component: {fileID: 3643679721478699231}
+  - component: {fileID: 3142563678734176758}
   m_Layer: 0
   m_Name: BdyTrigger
   m_TagString: PlayerBodyTrigger
@@ -853,6 +854,18 @@ MonoBehaviour:
   switchTags:
   - Switch
   sunlightTag: SunlightPowerup
+--- !u!114 &3142563678734176758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057728051884232518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3062bde5f68aaa4c8efac5a0f8a9cc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2285365172545456405
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,7 +1501,6 @@ GameObject:
   - component: {fileID: 3531517253057408158}
   - component: {fileID: 3531517253057408159}
   - component: {fileID: 2252142638371974430}
-  - component: {fileID: 6904052825076496938}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -1605,18 +1617,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f6ddaf0926a52a4cb1c0463f9df7b63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6904052825076496938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4450420557764841922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3062bde5f68aaa4c8efac5a0f8a9cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4469673816574571161
