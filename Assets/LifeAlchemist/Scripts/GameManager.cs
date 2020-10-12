@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
 
     public void setRespawnPosition(Vector3 position)
     {
+        Debug.Log("Setting game manager respawn position: " + position);
         respawnPosition = position;
     }
 }
