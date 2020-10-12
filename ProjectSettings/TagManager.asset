@@ -9,6 +9,10 @@ TagManager:
   - Trap
   - Crane
   - Switch
+  - Pushable
+  - SunlightPowerup
+  - PlayerGroundTrigger
+  - PlayerBodyTrigger
   layers:
   - Default
   - TransparentFX

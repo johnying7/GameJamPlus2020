@@ -4,34 +4,46 @@ using UnityEngine;
 
 public class CraneController : MonoBehaviour
 {
-    public float timeToDropObject = 2.0f;
+    private PlayerCraneController playerCraneController;
+    private bool isPlayerAttached = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.transform.parent.GetComponent<MovingPlatform>().setCraneController(this);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void setPlayerPlaneController(PlayerCraneController playerCraneController)
     {
-        
+        this.playerCraneController = playerCraneController;
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if (other.tag == "Crane")
+    public void attachPlayer()
+    {
+        if (playerCraneController != null)
         {
-            this.transform.parent.parent = other.transform;
-            this.GetComponent<Rigidbody>().isKinematic = true;
-            this.transform.parent.GetComponent<PlayerMovement>().enabled = false;
-            this.GetComponent<PlayerTouch>().enabled = false;
+            isPlayerAttached = true;
+            playerCraneController.attachPlayerToCrane();
         }
     }
-    
-    private void returnCharacterControl()
+
+    public void detachPlayer()
     {
-        this.transform.parent.parent = null;
-        this.GetComponent<Rigidbody>().isKinematic = false;
-        this.transform.parent.GetComponent<PlayerMovement>().enabled = true;
-        this.GetComponent<PlayerTouch>().enabled = true;
+        if (playerCraneController != null)
+        {
+            isPlayerAttached = false;
+            playerCraneController.detachPlayerFromCrane();
+        }
+    }
+
+    public void attachAndDetachPlayer()
+    {
+        if (isPlayerAttached)
+        {
+            detachPlayer();
+        }
+        else
+        {
+            attachPlayer();
+        }
     }
 }

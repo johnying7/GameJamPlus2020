@@ -14,6 +14,9 @@ public class MovingPlatform : MonoBehaviour
     private int currentIndex = 0;
     private bool resetPlatform = true;
 
+    private CraneController craneController;
+    private bool isIncreasing = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +50,11 @@ public class MovingPlatform : MonoBehaviour
         resetPlatform = true;
     }
 
+    public void setCraneController(CraneController craneController)
+    {
+        this.craneController = craneController;
+    }
+
     private IEnumerator moveToPosition(Vector3 origin, Vector3 target, float duration)
     {
         float journey = 0f;
@@ -65,6 +73,12 @@ public class MovingPlatform : MonoBehaviour
 
     private void incrementCurrentgoalPosition()
     {
+        if (craneController != null)
+        {
+            operateCraneOverrideController(currentIndex == 0, currentIndex == platformPositions.Count - 1);
+            return;
+        }
+
         if (currentIndex == platformPositions.Count - 1)
         {
             currentIndex = 0;
@@ -82,5 +96,29 @@ public class MovingPlatform : MonoBehaviour
     private float getDuration(Vector3 position1, Vector3 position2, float speed)
     {
         return Vector3.Distance(position1, position2) / speed;
+    }
+
+    private void operateCraneOverrideController(bool isFirstStop, bool isLastStop)
+    {
+        if (isFirstStop)
+        {
+            currentIndex++;
+            craneController.attachAndDetachPlayer();
+            isIncreasing = true;
+        }
+        else if (isLastStop)
+        {
+            currentIndex--;
+            craneController.attachAndDetachPlayer();
+            isIncreasing = false;
+        }
+        else if (isIncreasing)
+        {
+            currentIndex++;
+        }
+        else if (!isIncreasing)
+        {
+            currentIndex--;
+        }
     }
 }

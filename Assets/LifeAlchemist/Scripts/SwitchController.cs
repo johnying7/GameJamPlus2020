@@ -33,17 +33,17 @@ public class SwitchController : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player" && !canActivate)
+        if (other.tag == "PlayerBodyTrigger" && !canActivate)
         {
             Debug.Log("Arriving at switch");
-            playerTouch = other.GetComponent<PlayerTouch>();
+            playerTouch = other.transform.parent.GetComponent<PlayerTouch>();
             playerTouch.SwitchAnimationEnd.AddListener(TriggerSwitchEvent);
             canActivate = true;
         }
     }
 
     private void OnTriggerExit(Collider other) {
-        if (other.tag == "Player" && canActivate)
+        if (other.tag == "PlayerBodyTrigger" && canActivate)
         {
             Debug.Log("Leaving switch");
             playerTouch.SwitchAnimationEnd.RemoveListener(TriggerSwitchEvent);
