@@ -8,7 +8,8 @@ public class ConveyorBeltImpulse : MonoBehaviour
     //public bool right;
     private void OnTriggerStay(Collider other){
         if(other.tag.Equals("PlayerGroundTrigger")){
-            other.transform.parent.GetComponent<Rigidbody>().AddForce(new Vector3(conveyorBeltImpulse, 0, 0 ));
+            
+            other.transform.parent.GetComponent<Rigidbody>().AddForce(conveyorBeltImpulse * this.transform.right);
         }
     }
     private void OnTriggerExit(Collider other){
