@@ -12,7 +12,7 @@ public class TrapMechanism : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag == "PlayerGroundTrigger")
+        if (other.tag == "PlayerBodyTrigger")
         {
             killPlayer();
         }
