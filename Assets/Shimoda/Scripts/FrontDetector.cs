@@ -38,8 +38,7 @@ public class FrontDetector : MonoBehaviour
             pushableBody.constraints =  RigidbodyConstraints.FreezeRotationX | 
                                         RigidbodyConstraints.FreezeRotationY | 
                                         RigidbodyConstraints.FreezeRotationZ | 
-                                        RigidbodyConstraints.FreezePositionY | 
-                                        RigidbodyConstraints.FreezePositionZ;
+                                        RigidbodyConstraints.FreezePositionZ ;
 
         }
 
@@ -53,8 +52,7 @@ public class FrontDetector : MonoBehaviour
                                         RigidbodyConstraints.FreezeRotationY | 
                                         RigidbodyConstraints.FreezeRotationZ | 
                                         RigidbodyConstraints.FreezePositionX | 
-                                        RigidbodyConstraints.FreezePositionY | 
-                                        RigidbodyConstraints.FreezePositionZ;
+                                        RigidbodyConstraints.FreezePositionZ ;
         }
     }
 

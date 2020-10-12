@@ -11,6 +11,8 @@ TagManager:
   - Switch
   - Pushable
   - SunlightPowerup
+  - PlayerGroundTrigger
+  - PlayerBodyTrigger
   layers:
   - Default
   - TransparentFX
