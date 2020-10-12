@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         bdyDetector.NearSwitch.AddListener(NearSwitch);
         bdyDetector.AwayFromSwitch.AddListener(AwayFromSwitch);
         bdyDetector.EnterSunlight.AddListener(ActivateSunlight);
-        bdyDetector.LeaveSunlight.AddListener(DeactivateSunlight);
+        //bdyDetector.LeaveSunlight.AddListener(DeactivateSunlight);
 
         Transform fntTrigger = character.Find("FntTrigger");
         fntDetector = fntTrigger.GetComponent<FrontDetector>();
@@ -135,6 +135,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger("Death");
             Debug.Log("Executing death method.");
             alive = false;
+            DeactivateSunlight();
         }
     }
 
