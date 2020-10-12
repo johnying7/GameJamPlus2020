@@ -13,16 +13,17 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerTransform = GameObject.FindWithTag("Player").transform;
         if (playerTransform == null)
         {
-            Debug.LogError("Must set player transform in game manager.");
+            Debug.LogError("Must have a player in the scene.");
         }
         playerMovement = playerTransform.GetComponent<PlayerMovement>();
         characterTransform = playerTransform.Find("Character");
-        if (playerTransform.Find("Character").tag != "Player")
-        {
-            characterTransform.tag = "Player";
-        }
+        // if (playerTransform.Find("Character").tag != "Player")
+        // {
+        //     characterTransform.tag = "Player";
+        // }
         playerTouch = characterTransform.GetComponent<PlayerTouch>();
         playerTouch.DeathAnimationEnd.AddListener(respawnPlayer);
         respawnPosition = initialRespawnPosition.position;
