@@ -1,13 +1,9 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 <<<<<<< HEAD:Assets/Shimoda/Prefabs.meta
 guid: 501f25769c3aaf64ea341d0e469ad924
 =======
 guid: f629616890877de43b4910bddbcbf0cd
 >>>>>>> 775333f3622c39eb21793596e069cac78e73a9b2:Assets/Materials.meta
-=======
-guid: 501f25769c3aaf64ea341d0e469ad924
->>>>>>> 775333f3622c39eb21793596e069cac78e73a9b2
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
