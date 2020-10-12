@@ -623,6 +623,7 @@ MonoBehaviour:
   groundTags:
   - Ground
   - Platform
+  - ConveyorBelt
   BackToGround:
     m_PersistentCalls:
       m_Calls: []

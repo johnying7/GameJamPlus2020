@@ -13,6 +13,7 @@ TagManager:
   - SunlightPowerup
   - PlayerGroundTrigger
   - PlayerBodyTrigger
+  - ConveyorBelt
   layers:
   - Default
   - TransparentFX
