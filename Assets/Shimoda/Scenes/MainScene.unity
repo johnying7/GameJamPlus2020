@@ -872,6 +872,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1804778138520575693, guid: c3f9862900e6ca2419b585d375404fad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2057728051884232518, guid: c3f9862900e6ca2419b585d375404fad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3187943027164569663, guid: c3f9862900e6ca2419b585d375404fad,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.04
+      objectReference: {fileID: 0}
     - target: {fileID: 3531517254438387872, guid: c3f9862900e6ca2419b585d375404fad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -931,6 +946,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5767869998427411087, guid: c3f9862900e6ca2419b585d375404fad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3f9862900e6ca2419b585d375404fad, type: 3}
@@ -1000,6 +1020,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pushable
+      objectReference: {fileID: 0}
+    - target: {fileID: 7086152134979212207, guid: 498b427a69778504e83ed9056b749111,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 122
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 498b427a69778504e83ed9056b749111, type: 3}
