@@ -11,7 +11,7 @@ public class CheckPoint : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag == "PlayerGroundTrigger")
+        if (other.tag == "PlayerBodyTrigger")
         {
             GameObject.FindWithTag("GameController").GetComponent<GameManager>().setRespawnPosition(respawnPosition);
         }
