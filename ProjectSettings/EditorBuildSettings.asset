@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Terra/Scenes/Level.unity
     guid: 78abd6101885d74428c72f91e6d1232e
+  - enabled: 1
+    path: Assets/LifeAlchemist/Scenes/EndGameScene.unity
+    guid: 34a896f3228e0fc438b7b563dc371599
   m_configObjects: {}
