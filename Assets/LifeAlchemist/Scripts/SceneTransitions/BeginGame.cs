@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BeginGame : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class BeginGame : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            
+            SceneManager.LoadScene("Level");
         }
     }
 }

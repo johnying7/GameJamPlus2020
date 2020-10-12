@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Shimoda/Scenes/MainScene.unity
-    guid: 496c885e359ca414ab3f5f3edec63dd5
+    path: Assets/Nick/title_scene.unity
+    guid: c48b8aed3b4bc014f972e9ce0486206d
+  - enabled: 1
+    path: Assets/Terra/Scenes/Level.unity
+    guid: 78abd6101885d74428c72f91e6d1232e
   m_configObjects: {}
